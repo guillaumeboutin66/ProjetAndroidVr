@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import fr.guillaumeboutin.vrapplication1.Classes.Project;
+import fr.guillaumeboutin.vrapplication1.Manager.RealmManager;
 
 /**
  * Created by guillaumeboutin on 26/03/2017.

@@ -7,9 +7,9 @@ import io.realm.RealmObject;
  */
 
 public class Picture extends RealmObject {
-    private int             id;
-    private String          name;
-    private byte[] data;
+    private int    id;
+    private String name;
+    private String url;
 
     public int getId() {
         return id;
@@ -27,13 +27,14 @@ public class Picture extends RealmObject {
         this.name = name;
     }
 
-    public byte[] getData() {
-        return data;
+    public String getUrl() {
+        return url;
     }
 
-    public void setData(byte[] data) {
-        this.data = data;
+    public void setUrl(String url) {
+        this.url = url;
     }
+
     //Drawable d = Drawable.createFromStream(new ByteArrayInputStream(ARRAY_BYTES), null);
 
     /*

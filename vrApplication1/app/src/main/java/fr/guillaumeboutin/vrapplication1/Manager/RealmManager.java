@@ -1,4 +1,4 @@
-package fr.guillaumeboutin.vrapplication1;
+package fr.guillaumeboutin.vrapplication1.Manager;
 
 import android.content.Context;
 
