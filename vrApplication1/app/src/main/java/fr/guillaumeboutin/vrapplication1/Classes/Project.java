@@ -10,7 +10,7 @@ import io.realm.RealmObject;
 public class Project extends RealmObject {
     private int              id;
     private String           name;
-    private RealmList<Image> images;
+    private RealmList<Picture> pictures;
 
     public int getId() {
         return id;
@@ -28,15 +28,15 @@ public class Project extends RealmObject {
         this.name = name;
     }
 
-    public RealmList<Image> getImages() {
-        return images;
+    public RealmList<Picture> getPictures() {
+        return pictures;
     }
 
-    public void setImages(RealmList<Image> images) {
-        this.images = images;
+    public void setPictures(RealmList<Picture> pictures) {
+        this.pictures = pictures;
     }
 
-    public void addImages(Image image) {
-        this.images.add(image);
+    public void addImages(Picture picture) {
+        this.pictures.add(picture);
     }
 }

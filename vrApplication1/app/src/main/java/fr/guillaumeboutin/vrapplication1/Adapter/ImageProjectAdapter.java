@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 import java.util.List;
 
-import fr.guillaumeboutin.vrapplication1.Classes.Image;
+import fr.guillaumeboutin.vrapplication1.Classes.Picture;
 import fr.guillaumeboutin.vrapplication1.R;
 
 /**
@@ -18,30 +18,30 @@ import fr.guillaumeboutin.vrapplication1.R;
 
 public class ImageProjectAdapter  extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<Image> images = null;
+    private List<Picture> pictures = null;
 
     public ImageProjectAdapter(Context context) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setData(List<Image> images) {
-        this.images = images;
+    public void setData(List<Picture> pictures) {
+        this.pictures = pictures;
     }
 
     @Override
     public int getCount() {
-        if (images == null) {
+        if (pictures == null) {
             return 0;
         }
-        return images.size();
+        return pictures.size();
     }
 
     @Override
     public Object getItem(int position) {
-        if (images == null || images.get(position) == null) {
+        if (pictures == null || pictures.get(position) == null) {
             return null;
         }
-        return images.get(position);
+        return pictures.get(position);
     }
 
     @Override
@@ -55,10 +55,10 @@ public class ImageProjectAdapter  extends BaseAdapter {
             currentView = inflater.inflate(R.layout.image_listitem, parent, false);
         }
 
-        Image image = images.get(position);
+        Picture picture = pictures.get(position);
 
-        if (image != null) {
-            int id = currentView.getResources().getIdentifier("fr.guillaumeboutin.vrapplication1:drawable/" + image.getName(), null, null);
+        if (picture != null) {
+            int id = currentView.getResources().getIdentifier("fr.guillaumeboutin.vrapplication1:drawable/" + picture.getName(), null, null);
             ((ImageButton) currentView.findViewById(R.id.imageButton)).setImageDrawable(currentView.getResources().getDrawable(id));
         }
 

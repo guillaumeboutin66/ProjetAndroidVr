@@ -6,7 +6,7 @@ import io.realm.RealmObject;
  * Created by guillaumeboutin on 27/03/2017.
  */
 
-public class Image extends RealmObject {
+public class Picture extends RealmObject {
     private int             id;
     private String          name;
     private byte[] data;
