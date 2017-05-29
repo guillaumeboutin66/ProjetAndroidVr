@@ -36,6 +36,10 @@
                     android:layout_margin="15dip"
                     android:layout_width="match_parent"
                     android:layout_height="250dp" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imagetest"/>
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/fab"

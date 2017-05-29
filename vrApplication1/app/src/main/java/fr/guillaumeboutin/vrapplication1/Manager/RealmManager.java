@@ -15,7 +15,7 @@ public class RealmManager {
     Realm realm;
 
 
-    RealmManager(Context ctx){
+    public RealmManager(Context ctx){
         Realm.init(ctx);
         RealmConfiguration config = new RealmConfiguration.Builder().build();
         Realm.setDefaultConfiguration(config);

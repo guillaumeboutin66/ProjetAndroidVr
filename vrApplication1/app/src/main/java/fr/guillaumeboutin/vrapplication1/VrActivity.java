@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
@@ -70,17 +71,23 @@ public class VrActivity extends AppCompatActivity {
         Bitmap pano = BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2);
         pano = overlayCursor(pano);
 
+        ImageView test = (ImageView) findViewById(R.id.imagetest);
+        test.setImageBitmap(pano);
+
         VrPanoramaView vrPanoramaView = (VrPanoramaView) findViewById(R.id.myVRImage);
         vrPanoramaView.loadImageFromBitmap(pano, null);
         vrPanoramaView.resumeRendering();
     }
+
     private Bitmap overlayCursor(Bitmap bmp1) {
         Bitmap bmOverlay = Bitmap.createBitmap(bmp1.getWidth(), bmp1.getHeight(), bmp1.getConfig());
+        Log.e("iciici ", ""+bmp1.getWidth());
         Bitmap cursor = Bitmap.createBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2));
-        Canvas canvas = new Canvas(bmOverlay);
 
-        canvas.drawBitmap(bmp1, new Matrix(), null);
-        canvas.drawBitmap(cursor, new Matrix(), null);
+        //Bitmap result = Bitmap.createBitmap(1000, 1000, bmp1.getConfig());
+        Canvas canvas = new Canvas();
+        canvas.setBitmap(bmp1);
+        canvas.drawBitmap(cursor, 10, 10, null);
         return bmOverlay;
     }
     @Override
