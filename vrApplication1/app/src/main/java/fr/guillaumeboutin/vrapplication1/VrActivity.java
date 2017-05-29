@@ -2,7 +2,10 @@ package fr.guillaumeboutin.vrapplication1;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
@@ -63,11 +67,29 @@ public class VrActivity extends AppCompatActivity {
             }
         });
 
+
+        Bitmap pano = BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2);
+        pano = overlayCursor(pano);
+
+        ImageView test = (ImageView) findViewById(R.id.imagetest);
+        test.setImageBitmap(pano);
+
         VrPanoramaView vrPanoramaView = (VrPanoramaView) findViewById(R.id.myVRImage);
-        vrPanoramaView.loadImageFromBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2), null);
+        vrPanoramaView.loadImageFromBitmap(pano, null);
         vrPanoramaView.resumeRendering();
     }
 
+    private Bitmap overlayCursor(Bitmap bmp1) {
+        Bitmap bmOverlay = Bitmap.createBitmap(bmp1.getWidth(), bmp1.getHeight(), bmp1.getConfig());
+        Log.e("iciici ", ""+bmp1.getWidth());
+        Bitmap cursor = Bitmap.createBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2));
+
+        //Bitmap result = Bitmap.createBitmap(1000, 1000, bmp1.getConfig());
+        Canvas canvas = new Canvas();
+        canvas.setBitmap(bmp1);
+        canvas.drawBitmap(cursor, 10, 10, null);
+        return bmOverlay;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -89,4 +111,5 @@ public class VrActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
