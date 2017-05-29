@@ -2,7 +2,10 @@ package fr.guillaumeboutin.vrapplication1;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -63,11 +66,23 @@ public class VrActivity extends AppCompatActivity {
             }
         });
 
+
+        Bitmap pano = BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2);
+        pano = overlayCursor(pano);
+
         VrPanoramaView vrPanoramaView = (VrPanoramaView) findViewById(R.id.myVRImage);
-        vrPanoramaView.loadImageFromBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2), null);
+        vrPanoramaView.loadImageFromBitmap(pano, null);
         vrPanoramaView.resumeRendering();
     }
+    private Bitmap overlayCursor(Bitmap bmp1) {
+        Bitmap bmOverlay = Bitmap.createBitmap(bmp1.getWidth(), bmp1.getHeight(), bmp1.getConfig());
+        Bitmap cursor = Bitmap.createBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2));
+        Canvas canvas = new Canvas(bmOverlay);
 
+        canvas.drawBitmap(bmp1, new Matrix(), null);
+        canvas.drawBitmap(cursor, new Matrix(), null);
+        return bmOverlay;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -89,4 +104,5 @@ public class VrActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
