@@ -2,6 +2,7 @@ package fr.guillaumeboutin.vrapplication1;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,10 +14,18 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.vr.sdk.base.Eye;
+import com.google.vr.sdk.base.GvrView;
+import com.google.vr.sdk.base.HeadTransform;
+import com.google.vr.sdk.base.Viewport;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
+
+import javax.microedition.khronos.egl.EGLConfig;
 
 public class VrActivity extends AppCompatActivity {
     Context ctx;
@@ -66,6 +75,15 @@ public class VrActivity extends AppCompatActivity {
         VrPanoramaView vrPanoramaView = (VrPanoramaView) findViewById(R.id.myVRImage);
         vrPanoramaView.loadImageFromBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.pano2), null);
         vrPanoramaView.resumeRendering();
+
+        Button gvrButton = (Button) findViewById(R.id.gvrButton);
+        gvrButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(VrActivity.this, MyGvrView.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
