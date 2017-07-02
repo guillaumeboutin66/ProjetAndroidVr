@@ -29,4 +29,21 @@
             android:padding="10sp"
             android:id="@+id/button_select_picture"/>
     </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="1sp"
+        android:background="@color/colorAccent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go vr direct"
+            android:background="@color/white"
+            android:textColor="@color/colorAccent"
+            android:padding="10sp"
+            android:id="@+id/button_go_vr"/>
+    </FrameLayout>
 </LinearLayout>

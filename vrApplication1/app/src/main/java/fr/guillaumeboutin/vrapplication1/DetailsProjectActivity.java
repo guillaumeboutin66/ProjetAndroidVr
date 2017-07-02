@@ -65,6 +65,19 @@ public class DetailsProjectActivity extends AppCompatActivity {
                         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
                     }
                 });
+
+        findViewById(R.id.button_go_vr)
+                .setOnClickListener(new View.OnClickListener() {
+
+                    public void onClick(View arg0) {
+
+                        // in onCreate or any event where your want the user to
+                        // select a file
+                        Intent intent = new Intent(DetailsProjectActivity.this, VrActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
     }
 
     @Override
