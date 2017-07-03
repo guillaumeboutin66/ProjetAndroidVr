@@ -12,6 +12,11 @@
         android:textColor="@color/colorPrimaryDark"
         android:id="@+id/titreProject" />
 
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/projects_details_list"
+        android:numColumns="1"/>
 
     <FrameLayout
         android:layout_width="match_parent"

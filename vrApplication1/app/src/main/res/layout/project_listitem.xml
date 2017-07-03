@@ -7,8 +7,9 @@
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="19sp"
-        android:textAlignment="center"
+        android:textSize="21sp"
         android:id="@+id/nameProject"
-        android:background="@color/white"/>
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"/>
 </LinearLayout>

@@ -1,7 +1,9 @@
 package fr.guillaumeboutin.vrapplication1.Manager;
 
 import android.content.Context;
+import android.system.ErrnoException;
 
+import fr.guillaumeboutin.vrapplication1.Classes.Picture;
 import fr.guillaumeboutin.vrapplication1.Classes.Project;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -31,14 +33,27 @@ public class RealmManager {
     {
         try {
             return realm.where(Project.class).max("id").intValue() + 1;
-        } catch (ArrayIndexOutOfBoundsException e)
+        } catch (Exception e)
         {
             return 0;
         }
     }
 
+    public int getNextKeyPicture()
+    {
+        try {
+            return realm.where(Picture.class).max("id").intValue() + 1;
+        } catch (Exception e)
+        {
+            return 0;
+        }
+    }
     public RealmResults<Project> getProjects(){
         return realm.where(Project.class).findAll();
+    }
+
+    public RealmResults<Picture> getPicturesByProject(int idProject){
+        return realm.where(Picture.class).equalTo("idProject", idProject).findAll();
     }
 
 }

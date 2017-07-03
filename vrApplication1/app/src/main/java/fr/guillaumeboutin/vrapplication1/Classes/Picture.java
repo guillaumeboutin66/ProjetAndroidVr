@@ -8,6 +8,7 @@ import io.realm.RealmObject;
 
 public class Picture extends RealmObject {
     private int    id;
+    private int idProject;
     private String name;
     private String url;
 
@@ -33,6 +34,14 @@ public class Picture extends RealmObject {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getIdProject() {
+        return idProject;
+    }
+
+    public void setIdProject(int idProject) {
+        this.idProject = idProject;
     }
 
     //Drawable d = Drawable.createFromStream(new ByteArrayInputStream(ARRAY_BYTES), null);

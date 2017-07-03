@@ -199,8 +199,6 @@ public class MyGvrView  extends GvrActivity implements GvrView.StereoRenderer {
             AndroidCompat.setSustainedPerformanceMode(this, true);
         }
 
-        gvrView.getAs
-
         setGvrView(gvrView);
     }
 

@@ -1,11 +1,15 @@
 package fr.guillaumeboutin.vrapplication1.Adapter;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+
+import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
+import com.google.vr.sdk.widgets.pano.VrPanoramaView;
 
 import java.util.List;
 
@@ -58,8 +62,16 @@ public class ImageProjectAdapter  extends BaseAdapter {
         Picture picture = pictures.get(position);
 
         if (picture != null) {
-            int id = currentView.getResources().getIdentifier("fr.guillaumeboutin.vrapplication1:drawable/" + picture.getName(), null, null);
-            ((ImageButton) currentView.findViewById(R.id.imageButton)).setImageDrawable(currentView.getResources().getDrawable(id));
+            //int id = currentView.getResources().getIdentifier("fr.guillaumeboutin.vrapplication1:drawable/" + picture.getName(), null, null);
+            VrPanoramaView vr = ((VrPanoramaView) currentView.findViewById(R.id.imageButton));
+            vr.loadImageFromBitmap(BitmapFactory.decodeFile(picture.getUrl()), null);
+
+            vr.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    return false;
+                }
+            });
         }
 
         return currentView;
